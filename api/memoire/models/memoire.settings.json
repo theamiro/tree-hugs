@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "Memoire",
+  "info": {
+    "name": "Memoire",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "richtext",
+      "required": true
+    },
+    "thumbnail": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "author": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "memoires"
+    },
+    "comments": {
+      "via": "memoire",
+      "collection": "comment"
+    }
+  }
+}
